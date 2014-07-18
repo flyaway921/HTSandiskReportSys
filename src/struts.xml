@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+    <package name="globalPkg" namespace="/" extends="struts-default">
+
+        <global-results>
+            <result name="error">/error.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+        
+    </package>
+    
+    
+     <package name="user_action" namespace="/UserAction" extends="struts-default">  
+        <action name="login" class="com.sandisk.rpsys.action.UserAction" method="login">  
+            <result name="success" type="redirect">/weeklyview.jsp</result>  
+            <result name="fail">/login.jsp</result>  
+       </action>
+     </package>  
+     
+     
+     <package name="report_action" namespace="" extends="struts-default">  
+        <action name="submitReport" class="com.sandisk.rpsys.action.ReportAction" method="submitReport">  
+            <result name="success" type="redirect">/index.jsp</result>  
+            <result name="fail">/login.jsp</result>  
+       </action>
+     </package>  
+
+    <!-- Add packages here -->
+
+</struts>
